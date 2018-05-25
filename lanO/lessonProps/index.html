@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--react.js是React的核心库-->
+    <script src="./build/react.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="./build/react-dom.js"></script>
+    <!--browser.min.js的作用是将JSX语法转换成Javascript语法-->
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+<!--React渲染的模版内容会插入到这个Dom节点中，作为容器-->
+<div id="container">
+
+</div>
+</body>
+<!--在React开发中，使用JSX，跟javascript不兼容，在使用JSX的地方要设置type：text/babel-->
+<!--babel是一个 转化编译器，ES6转换成可以在浏览器运行的代码-->
+<script type="text/babel">
+    // 在此处编写React代码
+
+    /*
+    * props.state
+    * props是组件自身的属性，一般用于嵌套的内外层组件中。负责传递信息（通常是由父层组件向子组件传递）
+    * 注意：props对象中的属性一一对应，不要试图修改props中的属性值
+    * */
+
+
+    /*
+    * 定义一个组件WebShow。功能：输出网站的名字和网址，网站是一个可以点击的连接
+    * 分析：定义一个组件WebName负责输出网站的名字，定义组件WebLink显示网站的网址，并且可以点击
+    *
+    *
+    *思路：
+    * 1.为WebShow设置两个属性，wname，wlink
+    * 2.WebShow的props对象增加了两个属性值
+    * 3.WebName从WebShow的Props对象中获取wname的值，即网站的名称
+    *
+    * */
+    let WebName = React.createClass({
+        render(){
+            return <h1>{this.props.webname}</h1>;
+        }
+    });
+    // 定义WebLink组件
+    let WebLink = React.createClass({
+        render(){
+            return <a href={this.props.weblink}>{this.props.weblink}</a>
+        }
+    });
+    // 定义 一个WebShow
+    let WebShow = React.createClass({
+        render(){
+            return (
+                <div>
+                    <WebName webname={this.props.wname}/>
+                    <WebLink weblink={this.props.wlink}/>
+                </div>
+            )
+        }
+    });
+    // 渲染
+    ReactDOM.render(
+        <WebShow wname="百度" wlink="www.baidu.com"/>,
+        document.getElementById('container')
+    )
+
+    /*
+    * ...this.props
+    * props提供的语法糖，可以将父组件中的全部属性复制到子组件
+    * 需求：定义一个组件Link，Link组件中只包含一个<a>,我们不给<a>设置任何属性，所有属性全部从父组件复制得到
+    * */
+
+    let Link = React.createClass({
+        render(){
+            return <a {...this.props}>{this.props.name}</a>
+        }
+    });
+    ReactDOM.render(
+        <Link href="http://www.baidu.com" name="百度"/>,
+        document.getElementById('container')
+    )
+
+</script>
+</html>
