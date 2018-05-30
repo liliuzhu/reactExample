@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--react.js是React的核心库-->
+    <script src="./build/react.js"></script>
+    <!--react-dom.js的作用是提供与Dom相关的功能-->
+    <script src="./build/react-dom.js"></script>
+    <!--browser.min.js的作用是将JSX语法转换成Javascript语法-->
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+<!--React渲染的模版内容会插入到这个Dom节点中，作为容器-->
+<div id="container">
+
+</div>
+</body>
+<!--在React开发中，使用JSX，跟javascript不兼容，在使用JSX的地方要设置type：text/babel-->
+<!--babel是一个 转化编译器，ES6转换成可以在浏览器运行的代码-->
+<script type="text/babel">
+    // 在此处编写React代码
+
+    /*
+    * 事件处理
+    * react中的事件名称，首字母小写，驼峰命名法
+    * 案例：定义一个组件，组件中包含一个button，给button绑定onClick事件
+    *
+    * */
+
+    var MyBotton = React.createClass({
+        handleClick(){
+            alert('点击按钮触发的效果');
+        },
+        render(){
+            return <button onClick={this.handleClick}>{this.props.buttonTitle}</button>
+        }
+    });
+    ReactDOM.render(
+        <MyBotton buttonTitle="按钮"/>,
+        document.getElementById('container')
+    );
+
+    /*
+    * state 状态
+    * props
+    * 组件自身的属性
+    *
+    * this，state
+    * */
+    // 需求：创建一个CheckButton组件，包含一个checkbox类型input
+    // 复选框在选中和未选中两种状态下显示不同的文字。即根据状态渲染
+
+    var CheckButton= React.createClass({
+        // 定义初始状态
+        getInitialState(){
+            return {
+                // 在这个对象中设置的属性，将会存储在state中
+                // 默认状态，未选中
+                isCheck: false
+            }
+        },
+        // 定义事件绑定的方法
+        handelChange(){
+            // 修改状态值，通过this.state读取设置的状态值
+            this.setState({
+                isCheck: !this.state.isCheck
+            });
+        },
+        render(){
+            //根据状态值，设置显示的文字
+            // 在JSX语法中，不能直接使用if，使用三木运算符
+            var text = this.state.isCheck?'已选中': '未选中';
+            return (
+                <div>
+                    <input type="checkbox" onChange={this.handelChange}/>
+                    {text}
+                </div>
+            );
+        }
+    });
+    ReactDOM.render(
+        <CheckButton/>,
+        document.getElementById('container')
+    );
+
+    // 当state发生变化时，会重新调用组件内部的render方法
+</script>
+</html>

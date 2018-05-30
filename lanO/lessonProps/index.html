@@ -83,5 +83,84 @@
         document.getElementById('container')
     )
 
+    /*
+    * this.props.children
+    * children是一个例外，不是跟组件的属性对应的
+    * 表示组件的所有子节点
+    * html5的ol与ul
+    * 定义一个列表组件，列表相中显示的内容，以及列表项的数量都由外部决定
+    * */
+    var ListComponent = React.createClass({
+        render(){
+            return (
+                <ul>
+                    {
+                        /*
+                        * 列表项数量级内容不确定，在创建模版时才能确定
+                        * 利用this.props.children从父组件获取需要展示的列表项内容
+                        *
+                        * 获取到列表项内容后，需要遍历children，逐项进行设置
+                        * 使用React.Children.map方法
+                        * 返回值：数组对象，这里数组中的元素是li
+                        * */
+                        React.Children.map(this.props.children, (child) => {
+                            //child是遍历得到的子节点
+                            return <li>{child}</li>
+                        } )
+                    }
+                </ul>
+            )
+        }
+    });
+
+    ReactDOM.render(
+        (
+            <ListComponent>
+                <h1>百度</h1>
+                <a href="http:///www.baidu.com">http:///www.baidu.com</a>
+            </ListComponent>
+        ),
+        document.getElementById('container')
+    )
+
+    /*
+    * 属性的验证propTypes
+    * 组件类的属性
+    * 用于验证实例的属性是否符合要求
+    * */
+    var ShowTitle = React.createClass({
+        propTypes: {
+            // title数据类型必须为字符串
+            title: React.PropTypes.string.isRequired
+        },
+        render(){
+            return <h1>{this.props.title}</h1>
+        }
+    });
+    ReactDOM.render(
+        <ShowTitle title="123"></ShowTitle>,
+        document.getElementById('container')
+    )
+
+    /*
+    * 设置组件属性的默认值
+    * 通过实现组件的getDefaultProps方法，对属性设置默认值
+    * */
+    var MyTitle = React.createClass({
+        getDefaultProps(){
+            return {
+                title: "百度"
+            };
+        },
+        render(){
+            return <h1>{this.props.title}</h1>
+        }
+    })
+    ReactDOM.render(
+        <MyTitle />,
+        document.getElementById('container')
+    )
+
+
 </script>
 </html>
