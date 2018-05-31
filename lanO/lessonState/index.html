@@ -85,5 +85,38 @@
     );
 
     // 当state发生变化时，会重新调用组件内部的render方法
+
+    /*
+    * 需求：定义一个组件，将用户在输入狂内输入的内容进行实时显示
+    *
+    * 分析：
+    * 组件与用户交互过程，存在状态的改变，即输入框的值
+    * */
+    var Input = React.createClass({
+        getInitialState(){
+            return {
+                value: '请输入'
+            }
+        },
+        handleChange(event){
+            // 通过event.target.value读取用户输入的值
+            this.setState({
+                value: event.target.value
+            });
+        },
+        render(){
+            var value = this.state.value;
+            return (
+                <div>
+                    <input type="text" value={value} onChange={this.handleChange} />
+                    <p>{value}</p>
+                </div>
+            )
+        }
+    });
+    ReactDOM.render(
+        <Input/>,
+        document.getElementById('container')
+    )
 </script>
 </html>
