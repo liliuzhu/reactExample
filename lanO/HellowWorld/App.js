@@ -28,12 +28,20 @@ const instructions = Platform.select({
 });
 
 type Props = {};
+
+/*
+* 第二部分
+* 创建ReactNative组件
+*
+* 模版中使用的是ES6语法
+* render() {}  ES6简写
+* */
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to My Love!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit App.js
@@ -45,6 +53,13 @@ export default class App extends Component<Props> {
     );
   }
 }
+
+/*
+* 第三部分
+*
+* StyleSheel.create创建样式的实例
+* 在应用中只会被创建一次，不用每次在渲染周期中重新创建
+* */
 
 const styles = StyleSheet.create({
   container: {
