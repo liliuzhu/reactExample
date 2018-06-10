@@ -1,0 +1,3 @@
+rootProject.name = 'lessonStyle'
+
+include ':app'
