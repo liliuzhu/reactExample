@@ -19,10 +19,10 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.top}>
+        <Text style={[styles.top, styles.border]}>
           123
         </Text>
-        <Text style={styles.bottom}>
+        <Text style={[styles.bottom, styles.border, {borderWidth: 5}]}>
           124
         </Text>
       </View>
@@ -43,16 +43,16 @@ const styles = StyleSheet.create({
         backgroundColor: "green",
         width: 280,
         height: 250,
-        margin: 10,
-        borderWidth: 3,
-        borderColor: "black"
+        margin: 10
     },
     // 下层div
     bottom: {
         backgroundColor: 'yellow',
         width: 280,
         height: 110,
-        margin: 10,
+        margin: 10
+    },
+    border: {
         borderWidth: 3,
         borderColor: "black"
     }
