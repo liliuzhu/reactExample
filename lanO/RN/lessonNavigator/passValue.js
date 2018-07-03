@@ -22,10 +22,10 @@ class InputPage extends Component{
     };
     getInputContent(inputText){
         // 将输入框的值进行记录
-        this.setState({
-            content: inputText
-        });
-        // this.state.content = inputText;
+        // this.setState({
+        //     content: inputText
+        // });
+        this.state.content = inputText;
     };
     pushNextpage(){
       // 退出下一个页面，并且传值

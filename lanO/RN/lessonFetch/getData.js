@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import {
     Platform,
@@ -6,7 +7,6 @@ import {
     View,
     TouchableOpacity
 } from 'react-native';
-
 /*
 * 在ReactNative，使用fetch实现网络请求。fetch同XMLHttpRequest非常的类似，是一个封装程度更高多的网络
 * API，使用起来很简洁，因为使用了Promise
