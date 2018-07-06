@@ -34,12 +34,13 @@ import {
     Text,
     View,
     Image,
-    TabBarIOS,
     StatusBar
 
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import {Dimensions} from 'react-native'
+import {Dimensions} from 'react-native';
+import BookList from './android_views/book/book_list';
+import Navigation from './android_views/common/navigation';
 
 const deviceW = Dimensions.get('window').width
 
@@ -74,7 +75,7 @@ export default class App extends Component<Props> {
                     renderIcon={() => <Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     renderSelectedIcon={() =><Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     onPress={() => this.setState({selectedTab: 'home'})}>
-                    <View style={{backgroundColor:'cyan',flex:1}}></View>
+                    <Navigation component={BookList}/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'profile'}

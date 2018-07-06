@@ -27,8 +27,8 @@ class Navigation extends Component{
         };
         return (
             <Navigator
-                initialRouter={rootRoute}
-                configureScene={()=>{return Navigation.SceneConfigs.PushFromRight}}
+                initialRoute={rootRoute}
+                configureScene={()=>{return Navigator.SceneConfigs.PushFromRight}}
                 renderScene={(route, navigator) => {
                     let Component = route.component;
                     return (

@@ -26,16 +26,16 @@ import {
 
 class BookItem extends Component{
     render(){
-        let book = this.props.book;
+        let book = this.props.book || {};
         return(
             <TouchableOpacity style={styles.item} {...this.props}>
                 {/*图像*/}
-                <View style={style.imageContainer}>
+                <View style={styles.imageContainer}>
                     <Image style={styles.image} source={{uri:book.image}}/>
                 </View>
                 {/*图书信息*/}
                 <View style={styles.contentContainer}>
-                    <View style={style.textContainer}>
+                    <View style={styles.textContainer}>
                         <Text numberOfLines={1}>{book.title}</Text>
                     </View>
                     <View style={styles.textContainer}>
