@@ -24,7 +24,7 @@ class Header extends Component{
 
         return (
             <View style={styles.header}>
-                <TouchableOpacity style={styles.left_btn} onPress={this._pop}>
+                <TouchableOpacity style={styles.left_btn} onPress={this._pop.bind(this)}>
                     <Icon/>
                     <Text style={styles.btn_text}>{headerContent.backName}</Text>
                 </TouchableOpacity>
@@ -72,3 +72,4 @@ let styles= StyleSheet.create({
 
     }
 })
+export default Header

@@ -19,6 +19,7 @@ import Util from '../common/util';
 import SearchBar from '../common/searchBar';
 import ServiceURL from '../common/service';
 import BookItem from './book_item';
+import BookDetail from './book_detail';
 
 class BookList extends Component{
     constructor(props){
@@ -32,7 +33,7 @@ class BookList extends Component{
             // 搜索关键字
             // 作用：1、搜索接口需要设置搜索内容
             // 2、点击搜索按钮时、修改关键字内容、重新请求数据、重新渲染
-            keywords: "react"
+            keywords: "javascript"
         }
     }
     render(){
@@ -50,7 +51,7 @@ class BookList extends Component{
                             <ListView
                                 dataSource={this.state.dataSource}
                                 initialListSize={10}
-                                renderRow={this._renderRow}
+                                renderRow={this._renderRow.bind(this)}
                                 renderSeparator={this._renderSeparator}
                             />
                             :Util.Loading
@@ -58,6 +59,10 @@ class BookList extends Component{
                 </ScrollView>
             </View>
         )
+    };
+    componentDidMount(){
+        // 请求数据
+        this.getData();
     };
     getData(){
         // 开启loading，每次搜索时都需要重新下载显示数据
@@ -101,13 +106,9 @@ class BookList extends Component{
     _searchPress(){
         this.getData();
     };
-    componentDidMount(){
-        // 请求数据
-        this.getData();
-    };
     _renderRow(book){
         return (
-            <BookItem book={book} />
+            <BookItem book={book} onPress={this._showDetail.bind(this, book.id)} />
         )
     };
     _renderSeparator(sectionID:number, rowID:number){
@@ -118,6 +119,15 @@ class BookList extends Component{
         return (
             <View style={style} key={sectionID+rowID}></View>
         );
+    };
+    _showDetail(bookID){
+        let detailRoute = {
+            component: BookDetail,
+            passProps: {
+                bookID: bookID
+            }
+        };
+        this.props.navigator.push(detailRoute);
     }
 }
 export default BookList;
