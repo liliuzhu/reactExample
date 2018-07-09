@@ -40,6 +40,7 @@ import {
 import TabNavigator from 'react-native-tab-navigator';
 import {Dimensions} from 'react-native';
 import BookList from './android_views/book/book_list';
+import MovieList from './android_views/movies/movie_list';
 import Navigation from './android_views/common/navigation';
 
 const deviceW = Dimensions.get('window').width
@@ -75,7 +76,7 @@ export default class App extends Component<Props> {
                     renderIcon={() => <Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     renderSelectedIcon={() =><Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     onPress={() => this.setState({selectedTab: 'home'})}>
-                    <Navigation component={BookList}/>
+                    <Navigation component={MovieList}/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'profile'}
@@ -84,7 +85,7 @@ export default class App extends Component<Props> {
                     renderIcon={() => <Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     renderSelectedIcon={() => <Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     onPress={() => this.setState({selectedTab: 'profile'})}>
-                    <View style={{backgroundColor:'yellow',flex:1}}></View>
+                    <Navigation component={BookList}/>
                 </TabNavigator.Item>
             </TabNavigator>
         );
