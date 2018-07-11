@@ -30,9 +30,10 @@ class CustomWebView extends Component{
                 <WebView
                     startInLoadingState={true}
                     contentInset={{top: -44, bottom: -120}}
-                    source={{url: this.props.url}}
+                    source={{uri: this.props.url}}
                 />
             </View>
         )
     }
 }
+export default CustomWebView;

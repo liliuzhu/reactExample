@@ -78,13 +78,13 @@ class MovieList extends Component{
         })
     };
     _renderRow(movie){
-        return <MovieItem movie={movie} onPress={this._showDetail.bind(this, movie.title, movie.alt)} />
+        return (<MovieItem movie={movie} onPress={this._showDetail.bind(this, movie.title, movie.alt)} />)
     };
     _renderSeparator(sectionID:number, rowID:number){
         let style={
             height:1,
             backgroundColor:'#ccc'
-        }
+        };
         return <View style={style} key={sectionID+rowID}></View>
     };
     _changeText(text){

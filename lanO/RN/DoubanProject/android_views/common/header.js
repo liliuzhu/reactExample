@@ -67,7 +67,7 @@ let styles= StyleSheet.create({
         color:'#fff',
         fontSize:18,
         fontWeight:'bold',
-        lineHeight: 18,
+        lineHeight: 44,
         width: 200
 
     }

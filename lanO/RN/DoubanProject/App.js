@@ -63,29 +63,29 @@ export default class App extends Component<Props> {
     constructor(props){
         super(props);
       this.state = {
-          selectedTab: 'home'
+          selectedTab: '图书'
       }
     };
     render() {
         return (
             <TabNavigator style={styles.container}>
                 <TabNavigator.Item
-                    selected={this.state.selectedTab === 'home'}
-                    title="Home"
+                    selected={this.state.selectedTab === '图书'}
+                    title="图书"
                     selectedTitleStyle={{color: "#3496f0"}}
                     renderIcon={() => <Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     renderSelectedIcon={() =><Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
-                    onPress={() => this.setState({selectedTab: 'home'})}>
-                    <Navigation component={MovieList}/>
+                    onPress={() => this.setState({selectedTab: '图书'})}>
+                    <Navigation component={BookList}/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
-                    selected={this.state.selectedTab === 'profile'}
-                    title="Profile"
+                    selected={this.state.selectedTab === '电影'}
+                    title="电影"
                     selectedTitleStyle={{color: "#3496f0"}}
                     renderIcon={() => <Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
                     renderSelectedIcon={() => <Image style={{width:px2dp(22),height:px2dp(22)}} source={require('./static/images/book.jpg')}/>}
-                    onPress={() => this.setState({selectedTab: 'profile'})}>
-                    <Navigation component={BookList}/>
+                    onPress={() => this.setState({selectedTab: '电影'})}>
+                    <Navigation component={MovieList}/>
                 </TabNavigator.Item>
             </TabNavigator>
         );

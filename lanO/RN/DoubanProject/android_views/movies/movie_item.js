@@ -33,12 +33,12 @@ class MovieItem extends Component{
         // 需要遍历数组。把每一个演员名字存在一个新的数组中
         let actors = [];
         movie.casts.forEach(item => {
-            actors.push(item,name);
+            actors.push(item.name);
         });
         return (
             <TouchableOpacity style={styles.item} {...this.props}>
                 <View style={styles.imageContainer}>
-                    <Image style={styles.image} sesizeMode="contain" source={{uri:movie.images.medium}} />
+                    <Image style={styles.image} resizeMode="contain" source={{uri:movie.images.medium}} />
                 </View>
                 <View style={styles.contentContainer}>
                     <View style={styles.textContainer}><Text style={styles.text} numberOfLines={1}>名称：{movie.title}</Text></View>
