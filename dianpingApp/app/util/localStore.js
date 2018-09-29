@@ -1,15 +1,15 @@
 export default {
     getItem: function (key) {
-        let value
+        let value = null;
         try {
             value = localStorage.getItem(key)
         } catch (ex) {
             // 开发环境下提示error
-            if (__DEV__) {
+            // if (__DEV__) {
                 console.error('localStorage.getItem报错, ', ex.message)
-            }
+            // }
         } finally {
-            return value
+            return value; // eslint-disable-line
         }
     },
     setItem: function (key, value) {
@@ -18,9 +18,9 @@ export default {
             localStorage.setItem(key, value)
         } catch (ex) {
             // 开发环境下提示 error
-            if (__DEV__) {
+            // if (__DEV__) {
                 console.error('localStorage.setItem报错, ', ex.message)
-            }
+            // }
         }
     }
 }
